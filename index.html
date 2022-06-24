@@ -1,7 +1,7 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Sortout</title>
+  <title>CompressFeat</title>
   <meta name="description" content="Project page for Compressing Features for Learning with Noisy Labels.">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
   <meta charset="utf-8">
@@ -35,7 +35,7 @@
 <div class="container" style="text-align:center; padding:2rem 15px">
   <div class="row" style="text-align:center">
     <h1>Compressing Features for Learning with Noisy Labels</h1>
-    <h4>TNNLS, 2022</h4>
+    <h4>IEEE TRANSACTIONS ON NEURAL NETWORKS AND LEARNING SYSTEMS, 2022</h4>
   </div>
   <div class="row" style="text-align:center">
     <div class="col-xs-0 col-md-2"></div>
@@ -49,7 +49,7 @@
         
       </h4>
 
-      <sup>1</sup> KU Leuven, Leuven &emsp;
+      <sup>1</sup> ESAT-STADIUS, KU Leuven, Leuven &emsp;
       <sup>2</sup> Samsung AI Center, Cambrige <br /> 
       <sup>3</sup> Tencent AI, Shenzhen &emsp;
       <sup>4</sup> CUHK, Shenzhen
@@ -60,7 +60,7 @@
         <i class="fa fa-file-pdf-o fa-4x"></i> PDF</a> 
     </div>
     <div class="hidden-xs hidden-sm col-md-1" style="text-align:center; margin-left:0px;">
-      <a href="https://github.com/monniert/dti-clustering" style="color:inherit">
+      <a href="https://github.com/yingyichen-cyy/Nested-Co-teaching" style="color:inherit">
         <i class="fa fa-github fa-4x"></i> GitHub</a>
     </div>
   </div>
@@ -68,11 +68,14 @@
 
 <div class="container" style="text-align:center; padding:1rem">
   <img src="resrc/teaser.jpg" alt="teaser.jpg" class="text-center" style="width: 100%; max-width: 1100px">
+  <p>Comparisons of regression between standard MLP and MLP trained with Nested Dropout and Dropout on a synthetic noisy label dataset. 
+  (a) MLP with standard training; 
+  (b-d) predictions of MLP+Nested using only the first <img src="http://latex.codecogs.com/svg.latex?k\in\{1,10,100\}" alt="k\in\{1,10,100\}" border="0"/> channels;
+  (e-h) predictions of MLP+Dropout with drop ratio <img src="http://latex.codecogs.com/svg.latex?p_{\text{drop}}\in\{0.9,0.7,0.5,0.3\}" alt="p_{\text{drop}}\in\{0.9,0.7,0.5,0.3\}" border="0"/>.
+  </p>
   <h3 style="text-align:center; padding-top:1rem">
     <a class="label label-info" href="https://arxiv.org/abs/2006.11132">Paper</a>
-    <a class="label label-info" href="https://github.com/monniert/dti-clustering">Code</a>
-    <a class="label label-info" href="https://www.youtube.com/embed/j20MBc1hWGQ">Video</a>
-    <a class="label label-info" href="resrc/dtic_long.pptx">Slides</a>
+    <a class="label label-info" href="https://github.com/yingyichen-cyy/Nested-Co-teaching">Code</a>
     <a class="label label-info" href="resrc/ref.bib">BibTeX</a>
   </h3>
 </div>
@@ -88,122 +91,113 @@
     More precisely, we revisit one classical  regularization named Dropout
     and its variant Nested Dropout.
     Dropout can serve as a compression constraint for its feature dropping mechanism,
-    while Nested Dropout further learns ordered feature representations w.r.t.~feature importance.
+    while Nested Dropout further learns ordered feature representations w.r.t. feature importance.
     Moreover, the trained models with compression regularization are further combined with Co-teaching for performance boost.
     <br /> 
     Theoretically, we conduct bias-variance decomposition of the objective function under compression regularization. 
     We analyze it for both single model and Co-teaching.
     This decomposition provides three insights:
-    \textit{(i)} it shows that over-fitting is indeed an issue in learning with noisy labels; 
-    \textit{(ii)} through an information bottleneck formulation, it explains why the proposed feature compression helps in combating label noise;
-    \textit{(iii)} it gives explanations on the performance boost brought by incorporating compression regularization into Co-teaching.
+    <i>(i)</i> it shows that over-fitting is indeed an issue in learning with noisy labels; 
+    <i>(ii)</i> through an information bottleneck formulation, it explains why the proposed feature compression helps in combating label noise;
+    <i>(iii)</i> it gives explanations on the performance boost brought by incorporating compression regularization into Co-teaching.
     Experiments show that our simple approach can have comparable or even better performance than the state-of-the-art methods on benchmarks with real-world label noise including Clothing1M and ANIMAL-10N.
   </p>
 
   <h3>Video</h3>
   <hr/>
   <div class="row" style="text-align:center">
-    <div class="col-xs-6 text-center">
-      <h4><u>Short presentation</u> (3min)</h4>
+    <div class="col-xs-6">
+      <h4><u>Presentation on Nested+Co-teaching</u> (7min)</h4>
       <div class="embed-responsive embed-responsive-16by9" style="text-align:center">
-        <iframe class="embed-responsive-item text-center" src="https://www.youtube.com/embed/j20MBc1hWGQ" frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          style="width:100%; clip-path:inset(1px 1px);" allowfullscreen></iframe>
-      </div>
-    </div>
-
-    <div class="col-xs-6 text-center">
-      <h4><u>Long presentation</u> (11min)</h4>
-      <div class="embed-responsive embed-responsive-16by9" style="text-align:center">
-        <iframe class="embed-responsive-item text-center" src="https://www.youtube.com/embed/xhLUOh5PKBA" frameborder="0"
+        <iframe class="embed-responsive-item text-center" src="https://www.youtube.com/embed/y9zBDioKMM0" frameborder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           style="width:100%; clip-path:inset(1px 1px);" allowfullscreen></iframe>
       </div>
     </div>
   </div>
 
-  <h3>Approach</h3>
+  <h3>Method</h3>
   <hr/>
   <div class="row" style="text-align: center">
     <div class="col-xs-6">
-      <h4 style="margin-right: 20%"><u>DTI framework</u></h4>
+      <h4 style="margin-right: 20%"><u>Overview</u></h4>
     </div>
     <div class="col-xs-6">
-      <h4><u>Deep transformation module 
-          <img src="http://latex.codecogs.com/svg.latex?\mathcal{T}_{f_{k}}" alt="T_f_k" border="0"/></u></h4>
+      <h4><u></u></h4>
     </div>
   </div>
   <div class="row" style="text-align: center">
     <div class="col-xs-6">
-      <img src="resrc/dti.png" alt="dti.png" class="text-center" style="width: 100%; max-width: 900px">
+      <img src="resrc/workflow.jpg" alt="workflow.jpg" class="text-center" style="width: 100%; max-width: 900px">
     </div>
-    <div class="col-xs-6">
-      <img src="resrc/deep_tsf.png" alt="deep_tsf.png" class="text-center" style="width: 90%; max-width: 900px; margin-top:
-      10px">
-    </div>
-  </div>
-  <div class="row" style="text-align: center">
     <div class="col-xs-6">
       <div style="width: 90%; max-width: 900px; padding-top:10px">
-      <p>Given a sample <img src="http://latex.codecogs.com/svg.latex?x_i" alt="x_i" border="0"/> and prototypes 
-      <img src="http://latex.codecogs.com/svg.latex?c_1" alt="c_1" border="0"/> and 
-      <img src="http://latex.codecogs.com/svg.latex?c_2" alt="c_2" border="0"/>, standard clustering such as K-means 
-      assigns the sample to the closest prototype. Our DTI clustering first aligns prototypes to the sample using a
-      family of parametric transformations - here rotations - then picks the prototype whose alignment yields the 
-      smallest distance.</p>
-      </div>
-    </div>
-    <div class="col-xs-6">
-      <div style="width: 100%; max-width: 900px; padding-top:10px">
-        <p>We predict alignment with deep learning. Given an image 
-      <img src="http://latex.codecogs.com/svg.latex?x_i" alt="x_i" border="0"/>, each deep parameter predictor 
-      <img src="http://latex.codecogs.com/svg.latex?f_k" alt="f_k" border="0"/> predicts 
-      parameters for a sequence of transformations - here affine, morphological and thin plate spline transformations -
-      to align the prototype <img src="http://latex.codecogs.com/svg.latex?c_k" alt="c_k" border="0"/>
-      to the query image <img src="http://latex.codecogs.com/svg.latex?x_i" alt="x_i" border="0"/>.</p>
+      <p>Overview of our method. In stage one, the hidden activation <img src="http://latex.codecogs.com/svg.latex?\tilde{Z}" alt="\tilde{Z}" border="0"/> is computed by a feature extractor <img src="http://latex.codecogs.com/svg.latex?f" alt="f" border="0"/>. 
+      Dropout/Nested Dropout is applied to <img src="http://latex.codecogs.com/svg.latex?\tilde{Z}" alt="\tilde{Z}" border="0"/> by masking some of the features to zeros, i.e., <img src="http://latex.codecogs.com/svg.latex?Z=M\odot \tilde{Z}" alt="Z=M\odot \tilde{Z}" border="0"/>. 
+      The compressed feature <img src="http://latex.codecogs.com/svg.latex?Z" alt="Z" border="0"/> is then fed into the network structure <img src="http://latex.codecogs.com/svg.latex?d" alt="d" border="0"/>, which can simply be a fully connected layer (FC), to perform the final prediction. 
+      In stage two, the two base networks are fine-tuned with Co-teaching.</p>
       </div>
     </div>
   </div>
 
-  <h3>Results</h3>
+  <h3>Theoretical Analysis</h3>
   <hr/>
   <div class="row" style="text-align: center; padding-left:1rem; padding-right:1rem; padding-bottom:1rem;">
-    <h4><u>Standard image clustering benchmarks</u></h4>
-      <img src="resrc/prototypes.jpg" alt="prototypes.jpg" class="text-center" style="width: 100%; max-width: 1000px;">
+    <h4><u>Bias-variance decomposition of a single network</u></h4>
+      <p>Intuitively, the bias term in the equation in Theorem 1 determines how close the average model <img src="http://latex.codecogs.com/svg.latex?\tilde{q}(y|x)" alt="\tilde{q}(y|x)" border="0"/> is to <img src="http://latex.codecogs.com/svg.latex?p(y|x)" alt="p(y|x)" border="0"/> and <img src="http://latex.codecogs.com/svg.latex?p(y|x)" alt="p(y|x)" border="0"/> is the conditional probability for the noisy <img src="http://latex.codecogs.com/svg.latex?Y" alt="Y" border="0"/>, while the variance term promotes a consensus among individual models.
+      The variance term also serves as a regularization to combat label noise in the sense that the consensus downweights the influence of the incorrect labels.
+      Unlike learning with clean data, we do not expect low bias as it indicates model's over-fitting to label noise.
+      Instead, we rely on the variance term and early stopping to provide good training signals.
+      </p>
+      <img src="resrc/thm1.jpg" alt="thm1.jpg" class="text-center" style="width: 55%; max-width: 1000px;">
+  </div>
+  <div class="row" style="text-align: center; padding-left:1rem; padding-right:1rem; padding-bottom:1rem;">
+    <h4><u>Bias-variance decomposition of our two-stage model</u></h4>
+      <p>The condition <img src="http://latex.codecogs.com/svg.latex?\alpha(y|x) \leq 1" alt="\alpha(y|x) \leq 1" border="0"/> in Theorem 2 equals to <img src="http://latex.codecogs.com/svg.latex?q_t(y|x) \geq \log\big[\mathbb{E}_{\tilde{q}(y|x)}\exp[ q_t(y|x)]\big]" alt="q_t(y|x) \geq \log\big[\mathbb{E}_{\tilde{q}(y|x)}\exp[ q_t(y|x)]\big]" border="0"/> where the right-hand side measures the difference between a single training network <img src="http://latex.codecogs.com/svg.latex?\tilde{q}(y|x)" alt="\tilde{q}(y|x)" border="0"/> and the teacher network <img src="http://latex.codecogs.com/svg.latex?q_t(y|x)" alt="q_t(y|x)" border="0"/> of Co-teaching. 
+      The larger the difference, the smaller the value, and vise versa.
+      Hence, <font color="red">to obtain smaller bias term</font> than that in Theorem 1, the sample selection of Co-teaching only chooses those <img src="http://latex.codecogs.com/svg.latex?(x,y)" alt="(x,y)" border="0"/> with large <img src="http://latex.codecogs.com/svg.latex?q_t(y|x)" alt="q_t(y|x)" border="0"/> so as to meet the condition.
+      As <img src="http://latex.codecogs.com/svg.latex?C_1(x,z)\leq 1" alt="C_1(x,z)\leq 1" border="0"/> by definition, if further <img src="http://latex.codecogs.com/svg.latex?\alpha(y|x) \leq C_1(x,z)" alt="\alpha(y|x) \leq C_1(x,z)" border="0"/>, i.e., <img src="http://latex.codecogs.com/svg.latex?q_t(y|x) \geq \log\big[\mathbb{E}_{\tilde{q}(y|x)}\exp[ q_t(y|x)]/C_1(x,z)\big]" alt="q_t(y|x) \geq \log\big[\mathbb{E}_{\tilde{q}(y|x)}\exp[ q_t(y|x)]/C_1(x,z)\big]" border="0"/> with larger right-hand side value, then we will have <font color="red">larger variance term</font> than that in Theorem 1.
+      </p>
+      <img src="resrc/thm2.jpg" alt="thm2.jpg" class="text-center" style="width: 70%; max-width: 1000px;">
+  </div>
+  <div class="row" style="text-align: center; padding-left:1rem; padding-right:1rem; padding-bottom:1rem;">
+    <h4><u>Conclusion</u></h4>
+      <p>Theorem 2 demonstrate that choosing samples with large <img src="http://latex.codecogs.com/svg.latex?q_t(y|x)" alt="q_t(y|x)" border="0"/> during selection of <font color=#00BBFF>Co-teaching</font> leads to <font color="red">smaller bias term and larger variance term</font> than those in Theorem 1.
+      That is, the impact of the bias term can be even diminished.
+      Consequently, the sample selection mechanism during Co-teaching's cross-update process helps in further preventing networks from over-fitting on noisy labels, thus achieving better performance on clean datasets.
+      </p>
+  </div>
+
+
+  <h3>Experiments</h3>
+  <hr/>
+  <div class="row" style="text-align: center; padding-left:1rem; padding-right:1rem; padding-bottom:1rem;">
+    <h4><u>CIFAR-10 & CIFAR-100 with synthetic label noise</u></h4>
+      <p>Test accuracy (%) of state-of-the-art methods under (a) symmetric noise on CIFAR-10 and CIFAR-100, (b) 40% asymmetric noise on CIFAR-10. 
+      All approaches are implemented with PreAct ResNet-18 architecture.
+      </p>
+      <img src="resrc/cifar.jpg" alt="cifar.jpg" class="text-center" style="width: 100%; max-width: 1000px;">
   </div>
   <div class="row" style="text-align:center; padding-left:1rem; padding-right:1rem; padding-bottom:1rem;">
-    <h4><u>MegaDepth locations</u></h4>
-      <img src="resrc/megadepth.jpg" alt="megadepth.jpg" class="text-center" style="width: 100%; max-width: 1000px;
+    <h4><u>Clothing1M with real-world label noise</u></h4>
+      <p>Test accuracy (%) of state-of-the-art methods on Clothing1M (noise ratio ∼38%). 
+      All approaches are implemented with ResNet-50 architecture.
+      Results with ``*" use a balanced subset or a balanced loss.
+      </p>
+      <img src="resrc/clothing1m.jpg" alt="clothing1m.jpg" class="text-center" style="width: 25%; max-width: 1000px;
       margin-top: 5px">
   </div>
   <div class="row" style="text-align:center; padding-left:1rem; padding-right:1rem; padding-bottom:1rem;">
-    <h4><u>MegaDepth Florence: detailed results</u></h4>
-      <p>We show the 6 best qualitatives prototypes learned using DTI clustering
-      with 20 clusters for Florence location in MegaDepth dataset. For each cluster, we show the 20 samples leading to
-      minimal reconstruction errors among all the samples in the cluster as well as corresponding transformed 
-      prototypes. Note how it manages to model real image transformations like illumination variations and viewpoint
-      changes.</p>
-      <img src="resrc/firenze.jpg" alt="firenze.jpg" class="text-center" style="width: 100%; max-width: 1100px">
+    <h4><u>ANIMAL-10N with real-world label noise</u></h4>
+      <p>Average test accuracy (%) with standard deviation (3 runs) of state-of-the-art methods on ANIMAL-10N (noise ratio ~8%). All approaches are implemented with VGG-19 architecture.
+      Results with ``*" use two networks for training.
+      </p>
+      <img src="resrc/animal.jpg" alt="animal.jpg" class="text-center" style="width: 27%; max-width: 1100px">
   </div>
-  <div class="row" style="text-align:center; padding-left:1rem; padding-right:1rem;padding-bottom:1rem;">
-    <h4><u>Instagram hashtags</u></h4>
-      <p>We show the 5 best qualitatives prototypes learned using DTI clustering
-      with 40 clusters for different Instagram photo collections. Each collection corresponds to a large unfiltered set
-      of Instagram images (from 10k to 15k) associated to a particular hashtag. Identifying visual trends or iconic
-      poses in this case is very challenging as most of the images are noise. You can visualize the type of collected 
-      images directly in Instagram: 
-      <a href=https://www.instagram.com/explore/tags/balitemple/>#balitemple</a>,
-      <a href=https://www.instagram.com/explore/tags/santaphoto/>#santaphoto</a>,
-      <a href=https://www.instagram.com/explore/tags/trevifountain/>#trevifountain</a>,
-      <a href=https://www.instagram.com/explore/tags/weddingkiss/>#weddingkiss</a>,
-      <a href=https://www.instagram.com/explore/tags/yogahandstand/>#yogahandstand</a>.</p>
-      <img src="resrc/instagram.jpg" alt="instagram.jpg" class="text-center"
-           style="width:100%;max-width:850px;margin-top:1rem;padding-right:1.5rem;">
-  </div>
-
+  
   <h3>Resources</h3>
   <hr/>
-  <div class="row" style="text-align: center">
+  <!-- <div class="row" style="text-align: center">
     <div class="col-xs-0 col-lg-0"></div>
     <div class="col-xs-4 col-lg-4">
       <h4>Paper</h4>
@@ -224,22 +218,22 @@
              style="max-width:70%; border:0.15em solid;border-radius:0.5em;"></a>
     </div>
     <div class="col-xs-0 col-lg-0"></div>
-  </div>
+  </div> -->
     <h4 style="padding-top:0.5em">BibTeX</h4>
     If you find this work useful for your research, please cite:
     <div class="card">
       <div class="card-block">
         <pre class="card-text clickselect">
-@inproceedings{monnier2020dticlustering,
+<!-- @inproceedings{monnier2020dticlustering,
   title={{Deep Transformation-Invariant Clustering}},
   author={Monnier, Tom and Groueix, Thibault and Aubry, Mathieu},
   booktitle={NeurIPS},
-  year={2020},
-}</pre>
+  year={2020}, -->
+<!-- }</pre> -->
       </div>
     </div>
 
-  <h3>Further information</h3>
+  <!-- <h3>Further information</h3>
   <hr/>
   If you like this project, please check out other related works from our group:
   <h4>Follow-ups</h4>
@@ -265,16 +259,20 @@
         Surface Generation (CVPR 2018)</a>
     </li>
   </ul>
-
+ -->
 
   <h3>Acknowledgements</h3>
   <hr/>
   <p>
-    This work was supported in part by <a href="https://enherit.enpc.fr/">ANR project EnHerit</a> ANR-17-CE23-0008,
-    project Rapid Tabasco, gifts  from  Adobe and HPC resources from GENCI-IDRIS (Grant 2020-AD011011697). We thank 
-    Bryan Russell, Vladimir Kim, Matthew Fisher, Fran&#231;ois Darmon, Simon Roburin, David Picard, Michael 
-    Ramamonjisoa, Vincent Lepetit, Elliot Vincent, Jean Ponce, William Peebles and Alexei Efros for inspiring 
-    discussions and valuable feedback.
+    This work is jointly supported by EU: The research leading to these results has received funding from the European Research Council under the European Union's Horizon 2020 research and innovation program / ERC Advanced Grant E-DUALITY (787960). This paper reflects only the authors' views and the Union is not liable for any use that may be made of the contained information.
+    Research Council KU Leuven:
+    Optimization frameworks for deep kernel machines C14/18/068
+    Flemish Government:
+    FWO: projects: GOA4917N (Deep Restricted Kernel Machines: Methods and Foundations), PhD/Postdoc grant
+    This research received funding from the Flemish Government (AI Research Program).
+    Ford KU Leuven Research Alliance Project KUL0076 (Stability analysis and performance improvement of deep reinforcement learning algorithms)
+    EU H2020 ICT-48 Network TAILOR (Foundations of Trustworthy AI - Integrating Reasoning, Learning and Optimization)
+    Leuven.AI Institute
   </p>
 </div>
 
